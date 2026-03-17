@@ -2,6 +2,7 @@
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame
+import tkinter as tk
 import subprocess
 import sys
 import pathlib as pl
@@ -117,7 +118,7 @@ pipe_spawn_time=(48)#
 #24 is probably minimum for free movement
 #about 48 for linear flapping
 pipe_timer=pipe_spawn_time/2
-pipe_gap=(16)*16 #192
+pipe_gap=(12)*16 
 top_pipe_y=64-(pipe_gap/2)
 bottom_pipe_y=screen_y-64+(pipe_gap/2)
 scorebox_y=screen_y/2
@@ -181,11 +182,11 @@ def func_level_up(amount):
 	global max_flappy_y_vel
 	global pipe_gap
 
-	level+=amount
-	life=levels[level][1]
-	pipe_speed+=1
-	pipe_spawn_time-=(int(4/(math.sqrt(level))))
-	pipe_gap-=level
+#	level+=amount
+#	life=levels[level][1]
+#	pipe_speed+=1
+#	pipe_spawn_time-=(int(4/(math.sqrt(level))))
+#	pipe_gap-=level
 
 #these kinda just made it unfun to play
 #	gravity+=((level^2)/16)
@@ -471,13 +472,13 @@ while running:
 	warning_text_rect=warning_text.get_rect()
 	warning_text_rect.center=(screen_x/2,32)
 
-	next_level_text=next_level_font.render(" NEXT LEVEL: " + str(xp_to_level_up),True,(25,255,25))
-	next_level_text_rect=next_level_text.get_rect()
-	next_level_text_rect.center=(128,192)
+#	next_level_text=next_level_font.render(" NEXT LEVEL: " + str(xp_to_level_up),True,(25,255,25))
+#	next_level_text_rect=next_level_text.get_rect()
+#	next_level_text_rect.center=(128,192)
 	
 	screen.blit(score_text,score_text_rect)
 	screen.blit(health_text,health_text_rect)
-	screen.blit(next_level_text,next_level_text_rect)
+#	screen.blit(next_level_text,next_level_text_rect)
 	if warning_too_high and warning_blink_timer<warning_blink_timer_max/2:
 		screen.blit(warning_text,warning_text_rect)
 #END rendering code
